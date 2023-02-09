@@ -13,6 +13,16 @@ export class AppGlobal {
 
   }
 
+  public calculatorTypeRoute(calc: AppConfig.CalculatorType, child?: AppConfig.Calculator) {
+    let route = `calculators/${calc.route}/${child?.route || ''}`;
+    console.log(route);
+    return route;
+  }
+
+  public noHref() {
+    return false;
+  }
+
   public toggleMenu() {
     this.menuOpened.next(!this.menuOpened.value);
   }

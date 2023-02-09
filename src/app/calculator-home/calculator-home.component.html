@@ -1,0 +1,25 @@
+<div class="body-wrapper" [ngClass]="appGlobal.getMenuOpened() ? 'menu-opened' : 'menu-closed'">
+
+  <div class="title content-block">
+    <h1>
+      Bunch of calculators
+    </h1>
+  </div>
+
+  <div class="wrapper">
+    <div *ngFor="let type of selectedTypes">
+      <a [href]="appGlobal.calculatorTypeRoute(type)" [routerLink]="appGlobal.calculatorTypeRoute(type)" (click)="appGlobal.noHref()"><h2>{{type.label}}</h2></a>
+      <ul>
+        <li *ngFor="let child of type.children">
+          <a [href]="appGlobal.calculatorTypeRoute(type, child)" [routerLink]="appGlobal.calculatorTypeRoute(type, child)" (click)="appGlobal.noHref()">{{child.label}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>

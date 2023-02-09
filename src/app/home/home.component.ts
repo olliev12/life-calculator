@@ -14,4 +14,8 @@ export class HomeComponent {
   constructor(public appGlobal: AppGlobal) {
 
   }
+
+  public typeRoute(calc: AppConfig.CalculatorType, child?: AppConfig.Calculator): string {
+    return this.appGlobal.calculatorTypeRoute(calc, child);
+  }
 }

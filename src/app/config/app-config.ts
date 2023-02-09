@@ -16,6 +16,11 @@ export const fitnessCalculators: Calculator[] = [
     name: "calorie",
     label: "Calorie Calculator",
     route: "calorie"
+  },
+  {
+    name: "bmi",
+    label: "BMI Calculator",
+    route: "bmi"
   }
 ];
 export const financialCalculators: Calculator[] = [
@@ -23,6 +28,11 @@ export const financialCalculators: Calculator[] = [
     name: "interest",
     label: "Interest Calculator",
     route: "interest"
+  },
+  {
+    name: "investment",
+    label: "Investment Calculator",
+    route: "investment"
   }
 ];
 export const mathCalculators: Calculator[] = [
@@ -37,6 +47,11 @@ export const otherCalculators: Calculator[] = [
     name: "password",
     label: "Password Generator",
     route: "password"
+  },
+  {
+    name: "gpa",
+    label: "GPA Calculator",
+    route: "gpa"
   }
 ];
 
