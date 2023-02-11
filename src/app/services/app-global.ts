@@ -14,8 +14,7 @@ export class AppGlobal {
   }
 
   public calculatorTypeRoute(calc: AppConfig.CalculatorType, child?: AppConfig.Calculator) {
-    let route = `calculators/${calc.route}/${child?.route || ''}`;
-    console.log(route);
+    let route = `/calculators/${calc.route}/${child?.route || ''}`;
     return route;
   }
 

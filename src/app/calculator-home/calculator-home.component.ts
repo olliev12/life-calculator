@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as AppConfig  from '../config/app-config';
 import { AppGlobal } from '../services/app-global';
 
+export enum Modes {
+  overview = 'overview',
+  calculator = 'calculator'
+}
+
 @Component({
   selector: 'app-calculator-home',
   templateUrl: './calculator-home.component.html',
@@ -10,7 +15,10 @@ import { AppGlobal } from '../services/app-global';
 })
 export class CalculatorHomeComponent {
   readonly types: AppConfig.CalculatorType[] = AppConfig.calculators;
+  readonly Modes = Modes;
   selectedTypes: AppConfig.CalculatorType[] = AppConfig.calculators;
+  selectedChild: AppConfig.Calculator = this.selectedTypes[0]?.children[0];
+  mode: Modes = Modes.overview;
 
   constructor(
     public appGlobal: AppGlobal,
@@ -20,32 +28,56 @@ export class CalculatorHomeComponent {
   }
 
   ngOnInit(): void {
-      this.route.params.subscribe((params) => {
-        if (params['type']) {
-          let mode = this.types.find((type) => type.route === params['type']);
-          if (params['type'] === 'all') {
-            this.selectedTypes = AppConfig.calculators;
-          }
-          else if (mode) {
-            this.setMode(mode);
-          }
-          else {
-            this.router.navigate([`calculators/all`]);
-          }
+    this.route.params.subscribe((params) => {
+      let calcType = this.types.find((type) => type.route === params['type']);
+      let childType = calcType?.children.find((child) => child.route === params['child']);
+      if (calcType) {
+        this.setType([calcType]);
+        this.setMode(Modes.overview);
+        if (childType) {
+          this.setCalculator(childType);
+          this.setMode(Modes.calculator);
         }
-        else {
-          this.router.navigate([`calculators/all`]);
-        }
-      });
+      }
+      else if (params['type'] === 'all') {
+        this.setType(AppConfig.calculators);
+        this.setMode(Modes.overview);
+      }
+      else {
+        this.router.navigate([`calculators/all`]);
+      }
+    });
   }
 
-  setMode(type: AppConfig.CalculatorType) {
-    this.selectedTypes = [type];
+  setMode(mode: Modes) {
+    this.mode = mode;
   }
 
-  selectMode(mode: AppConfig.CalculatorType) {
-    this.setMode(mode);
-    // this.router.navigate([`password/${this.selectedType.route}`]);
+  modeIs(mode: Modes): boolean {
+    return this.mode === mode;
+  }
+
+  setType(type: AppConfig.CalculatorType[]) {
+    this.selectedTypes = type;
+  }
+
+  setCalculator(calc: AppConfig.Calculator) {
+    this.selectedChild = calc;
+  }
+
+  public typeRoute(): string {
+    let route: string = '';
+    if (this.isAllCalculators()) {
+      route = '/calculators/all';
+    }
+    else {
+      return this.appGlobal.calculatorTypeRoute(this.selectedTypes[0]);
+    }
+    return route;
+  }
+
+  public isAllCalculators(): boolean {
+    return this.selectedTypes === AppConfig.calculators;
   }
 
 }

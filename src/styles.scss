@@ -5,6 +5,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .body-wrapper {
   padding: 10px;
+  min-height: -webkit-fill-available;
 }
 
 .menu-closed {

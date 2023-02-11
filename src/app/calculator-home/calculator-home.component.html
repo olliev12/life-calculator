@@ -1,25 +1,22 @@
 <div class="body-wrapper" [ngClass]="appGlobal.getMenuOpened() ? 'menu-opened' : 'menu-closed'">
 
-  <div class="title content-block">
-    <h1>
-      Bunch of calculators
-    </h1>
-  </div>
+  <p>
+    <a href="" routerLink="" (click)="appGlobal.noHref()">home</a>
+    <span>/</span>
+    <a href="/calculators" routerLink="/calculators" (click)="appGlobal.noHref()">calculators</a>
+    <span *ngIf="!isAllCalculators()">/</span>
+    <a *ngIf="!isAllCalculators()" [href]="typeRoute()" [routerLink]="typeRoute()" (click)="appGlobal.noHref()">{{selectedTypes[0].label.toLowerCase()}}</a>
+    <span *ngIf="modeIs(Modes.calculator)">/</span>
+    <a *ngIf="modeIs(Modes.calculator)" [href]="appGlobal.calculatorTypeRoute(selectedTypes[0], selectedChild)" [routerLink]="appGlobal.calculatorTypeRoute(selectedTypes[0], selectedChild)" (click)="appGlobal.noHref()">{{selectedChild.label.toLowerCase()}}</a>
+  </p>
 
-  <div class="wrapper">
-    <div *ngFor="let type of selectedTypes">
-      <a [href]="appGlobal.calculatorTypeRoute(type)" [routerLink]="appGlobal.calculatorTypeRoute(type)" (click)="appGlobal.noHref()"><h2>{{type.label}}</h2></a>
-      <ul>
-        <li *ngFor="let child of type.children">
-          <a [href]="appGlobal.calculatorTypeRoute(type, child)" [routerLink]="appGlobal.calculatorTypeRoute(type, child)" (click)="appGlobal.noHref()">{{child.label}}</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-
-
-
-
+  <app-calculator-overview *ngIf="modeIs(Modes.overview)"
+    [selectedTypes]="selectedTypes"
+    [isAllCalculators]="isAllCalculators()"
+  ></app-calculator-overview>
+  <app-calculator *ngIf="modeIs(Modes.calculator)"
+    [selectedTypes]="selectedTypes"
+    [selectedChild]="selectedChild"
+  ></app-calculator>
 
 </div>
