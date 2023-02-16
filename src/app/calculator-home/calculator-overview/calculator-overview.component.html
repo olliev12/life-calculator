@@ -6,20 +6,17 @@
     </h1>
   </div>
 
-  <div class="wrapper">
-    <div *ngFor="let type of selectedTypes">
-      <a [href]="appGlobal.calculatorTypeRoute(type)" [routerLink]="appGlobal.calculatorTypeRoute(type)" (click)="appGlobal.noHref()"><h2>{{type.label}}</h2></a>
-      <ul>
-        <li *ngFor="let child of type.children">
-          <a [href]="appGlobal.calculatorTypeRoute(type, child)" [routerLink]="appGlobal.calculatorTypeRoute(type, child)" (click)="appGlobal.noHref()">{{child.label}}</a>
-        </li>
-      </ul>
+  <div class="wrapper form-group">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let type of selectedTypes">
+        <a [href]="appGlobal.calculatorTypeRoute(type)" [routerLink]="appGlobal.calculatorTypeRoute(type)" (click)="appGlobal.noHref()"><h2>{{type.label}}</h2></a>
+        <ul class="no-bullets">
+          <li *ngFor="let child of type.children">
+            <a [href]="appGlobal.calculatorTypeRoute(type, child)" [routerLink]="appGlobal.calculatorTypeRoute(type, child)" (click)="appGlobal.noHref()">{{child.label}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-
-
-
-
-
 
 </div>
