@@ -11,7 +11,7 @@
       <div class="col-md-3 " *ngFor="let category of categories">
         <a [href]="appGlobal.calculatorTypeRoute(category)" [routerLink]="appGlobal.calculatorTypeRoute(category)" (click)="appGlobal.noHref()"><h2>{{category.label}}</h2></a>
         <ul class="no-bullets">
-          <li *ngFor="let child of category.children">
+          <li class="child-calc" *ngFor="let child of category.children">
             <a [href]="appGlobal.calculatorTypeRoute(category, child)" [routerLink]="appGlobal.calculatorTypeRoute(category, child)" (click)="appGlobal.noHref()">{{child.label}}</a>
           </li>
         </ul>

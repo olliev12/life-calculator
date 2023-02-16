@@ -21,6 +21,26 @@ export const fitnessCalculators: Calculator[] = [
     name: "bmi",
     label: "BMI Calculator",
     route: "bmi"
+  },
+  {
+    name: "bodyFat",
+    label: "Body Fat Calculator",
+    route: "body-fat"
+  },
+  {
+    name: "bmr",
+    label: "BMR Calculator",
+    route: "bmr"
+  },
+  {
+    name: "macro",
+    label: "Macro Calculator",
+    route: "macro"
+  },
+  {
+    name: "tdee",
+    label: "TDEE Calculator",
+    route: "tdee"
   }
 ];
 export const financialCalculators: Calculator[] = [
@@ -33,13 +53,48 @@ export const financialCalculators: Calculator[] = [
     name: "investment",
     label: "Investment Calculator",
     route: "investment"
+  },
+  {
+    name: "incomeTax",
+    label: "Income Tax Calculator",
+    route: "income-tax"
+  },
+  {
+    name: "rent",
+    label: "Rent Calculator",
+    route: "rent"
+  },
+  {
+    name: "tip",
+    label: "Tip Calculator",
+    route: "tip"
   }
 ];
 export const mathCalculators: Calculator[] = [
   {
+    name: "standard",
+    label: "Standard Calculator",
+    route: "standard"
+  },
+  {
     name: "scientific",
     label: "Scientific Calculator",
     route: "scientific"
+  },
+  {
+    name: "fraction",
+    label: "Fraction Calculator",
+    route: "fraction"
+  },
+  {
+    name: "percentage",
+    label: "Percentage Calculator",
+    route: "percentage"
+  },
+  {
+    name: "randomNumber",
+    label: "Random Number Generator",
+    route: "random-number"
   }
 ];
 export const otherCalculators: Calculator[] = [
@@ -52,6 +107,11 @@ export const otherCalculators: Calculator[] = [
     name: "gpa",
     label: "GPA Calculator",
     route: "gpa"
+  },
+  {
+    name: "temperature",
+    label: "Temperature Calculator",
+    route: "temperature"
   }
 ];
 
