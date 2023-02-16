@@ -15,7 +15,7 @@
     [isAllCalculators]="isAllCalculators()"
   ></app-calculator-overview>
   <app-calculator *ngIf="modeIs(Modes.calculator)"
-    [selectedTypes]="selectedTypes"
+    [selectedType]="selectedTypes[0]"
     [selectedChild]="selectedChild"
   ></app-calculator>
 

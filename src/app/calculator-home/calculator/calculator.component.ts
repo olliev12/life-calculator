@@ -10,8 +10,8 @@ import { AppGlobal } from 'src/app/services/app-global';
 })
 export class CalculatorComponent {
   readonly types: AppConfig.CalculatorType[] = AppConfig.calculators;
-  @Input() selectedTypes: AppConfig.CalculatorType[] = AppConfig.calculators;
-  @Input() selectedChild: AppConfig.Calculator = this.selectedTypes[0]?.children[0];
+  @Input() selectedType: AppConfig.CalculatorType = AppConfig.calculators[0];
+  @Input() selectedChild: AppConfig.Calculator = this.selectedType?.children[0];
 
   constructor(
     public appGlobal: AppGlobal,
@@ -21,7 +21,11 @@ export class CalculatorComponent {
   }
 
   ngOnInit(): void {
+    console.log(this.selectedType);
+  }
 
+  typeIs(typeName: string): boolean {
+    return this.selectedType.name === typeName;
   }
 
 }

@@ -68,6 +68,11 @@ export const financialCalculators: Calculator[] = [
     name: "tip",
     label: "Tip Calculator",
     route: "tip"
+  },
+  {
+    name: "adsense",
+    label: "Adsense Revenue Calculator",
+    route: "adsense"
   }
 ];
 export const mathCalculators: Calculator[] = [

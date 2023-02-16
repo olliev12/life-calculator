@@ -6,7 +6,10 @@
   </div>
 
   <div class="wrapper">
-
+    <app-fitness-calculators *ngIf="typeIs('fitness')"></app-fitness-calculators>
+    <app-financial-calculators *ngIf="typeIs('financial')"></app-financial-calculators>
+    <app-math-calculators *ngIf="typeIs('math')"></app-math-calculators>
+    <app-other-calculators *ngIf="typeIs('other')"></app-other-calculators>
   </div>
   <div>
     <p>
