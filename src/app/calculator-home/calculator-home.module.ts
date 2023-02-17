@@ -9,6 +9,10 @@ import { FitnessCalculatorsComponent } from './fitness-calculators/fitness-calcu
 import { FinancialCalculatorsComponent } from './financial-calculators/financial-calculators.component';
 import { MathCalculatorsComponent } from './math-calculators/math-calculators.component';
 import { OtherCalculatorsComponent } from './other-calculators/other-calculators.component';
+import { PasswordGeneratorComponent } from './other-calculators/password-generator/password-generator.component';
+import { StandardCalculatorComponent } from './math-calculators/standard-calculator/standard-calculator.component';
+import { RentCalculatorComponent } from './financial-calculators/rent-calculator/rent-calculator.component';
+import { CalorieCalculatorComponent } from './fitness-calculators/calorie-calculator/calorie-calculator.component';
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { OtherCalculatorsComponent } from './other-calculators/other-calculators
     FitnessCalculatorsComponent,
     FinancialCalculatorsComponent,
     MathCalculatorsComponent,
-    OtherCalculatorsComponent
+    OtherCalculatorsComponent,
+    PasswordGeneratorComponent,
+    StandardCalculatorComponent,
+    RentCalculatorComponent,
+    CalorieCalculatorComponent
   ],
   imports: [
     CommonModule,
