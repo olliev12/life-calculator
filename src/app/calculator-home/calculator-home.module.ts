@@ -13,6 +13,9 @@ import { PasswordGeneratorComponent } from './other-calculators/password-generat
 import { StandardCalculatorComponent } from './math-calculators/standard-calculator/standard-calculator.component';
 import { RentCalculatorComponent } from './financial-calculators/rent-calculator/rent-calculator.component';
 import { CalorieCalculatorComponent } from './fitness-calculators/calorie-calculator/calorie-calculator.component';
+import { CalcComponent } from './shared/calc/calc/calc.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,11 +30,13 @@ import { CalorieCalculatorComponent } from './fitness-calculators/calorie-calcul
     PasswordGeneratorComponent,
     StandardCalculatorComponent,
     RentCalculatorComponent,
-    CalorieCalculatorComponent
+    CalorieCalculatorComponent,
+    CalcComponent
   ],
   imports: [
     CommonModule,
-    CalculatorHomeRoutingModule
+    CalculatorHomeRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CalculatorHomeModule { }

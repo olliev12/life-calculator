@@ -1,3 +1,5 @@
+import { ValidatorFn } from "@angular/forms";
+
 export interface CalculatorType {
   name: string,
   label: string,
@@ -9,6 +11,17 @@ export interface Calculator {
   name: string,
   label: string,
   route: string
+}
+
+export interface FormConfig {
+  [key: string]: {
+    type: string;
+    label?: string;
+    value?: any;
+    validators: ValidatorFn[];
+    selectOptions?: { label: string; value: any }[]; // define selectOptions property for dropdown fields
+    radioOptions?: { label: string; value: any }[]; // define radioOptions property for radio button fields
+  };
 }
 
 export const fitnessCalculators: Calculator[] = [
@@ -146,6 +159,33 @@ export const calculators: CalculatorType[] = [
     children: otherCalculators
   }
 ];
+
+export const pages: CalculatorType[] = [
+  {
+    name: 'about',
+    label: 'About Us',
+    route: 'about',
+    children: []
+  },
+  {
+    name: 'blog',
+    label: 'Blog',
+    route: 'blog',
+    children: []
+  },
+  {
+    name: 'privacy',
+    label: 'Privacy Policy',
+    route: 'privacy',
+    children: []
+  },
+  {
+    name: 'all calculators',
+    label: 'All Calculators',
+    route: 'all',
+    children: []
+  }
+]
 
 export class AppConfig {
 }
