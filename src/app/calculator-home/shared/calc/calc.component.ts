@@ -3,6 +3,11 @@ import {KeyValue} from '@angular/common';
 import { FormGroup, Validators, ValidatorFn, FormBuilder } from '@angular/forms';
 import { FormConfig } from './../../../config/app-config';
 
+export enum ErrorMessages {
+  minlength = 'minlength',
+  required = 'required',
+  email = 'email'
+}
 
 @Component({
   selector: 'app-calc',
@@ -73,12 +78,6 @@ export class CalcComponent {
     const formFields = {};
 
     for (const [key, field] of Object.entries(this.formConfig)) {
-      // const validators = [];
-
-      // for (const validation of field.validators) {
-      //   validators.push(validation.type === 'required' ? Validators.required : Validators.minLength(validation.value));
-      // }
-
       (formFields as any)[key] = [field.value || '', field.validators];
     }
     this.fields = Object.entries(this.formConfig);
@@ -88,6 +87,24 @@ export class CalcComponent {
 
   onSubmit() {
     this.submitForm.emit(this.form);
-    console.log(this.form.value)
+    console.log(this.form.controls)
+    // console.log(this.form.value)
+  }
+
+  getErrorMessage(error: KeyValue<string, any>, fieldName: string) {
+    let message: string = '';
+    switch (error.key) {
+      case ErrorMessages.minlength:
+        message = `${fieldName} must be of minimum length ${error.value['requiredLength']}`;
+        break;
+      case ErrorMessages.email:
+        message = `Email format incorrect`;
+        break;
+      case ErrorMessages.required:
+      default:
+        message = `${fieldName} is required`;
+        break;
+    }
+    return message;
   }
 }

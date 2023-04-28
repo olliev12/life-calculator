@@ -14,17 +14,19 @@ export interface Calculator {
   route: string
 }
 
+export interface FormField {
+  type: string;
+  label?: string;
+  placeholder?:string;
+  value?: any;
+  validators: ValidatorFn[];
+  valueAccessor?: any;
+  selectOptions?: { label: string; value: any }[]; // define selectOptions property for dropdown fields
+  radioOptions?: { label: string; value: any }[]; // define radioOptions property for radio button fields
+}
+
 export interface FormConfig {
-  [key: string]: {
-    type: string;
-    label?: string;
-    placeholder?:string;
-    value?: any;
-    validators: ValidatorFn[];
-    valueAccessor?: any;
-    selectOptions?: { label: string; value: any }[]; // define selectOptions property for dropdown fields
-    radioOptions?: { label: string; value: any }[]; // define radioOptions property for radio button fields
-  };
+  [key: string]: FormField;
 }
 
 export const calorieConfig: FormConfig = {

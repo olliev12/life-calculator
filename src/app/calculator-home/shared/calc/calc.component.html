@@ -43,15 +43,15 @@
       </div>
     </div>
     <!-- TODO figure out validators -->
-    <!-- <div *ngIf="form.controls[field.key].invalid && (form.controls[field.key].dirty || form.controls[field.key].touched)">
+    <div *ngIf="form.controls[field.key].invalid && (form.controls[field.key].dirty || form.controls[field.key].touched)">
       <div class="alert alert-danger">
-        <div *ngFor="let validation of field.value.validators">
-          <div *ngIf="form.controls[field.key].hasError(validation.type)">
-            {{ validation.message }}
+        <div *ngFor="let error of form.controls[field.key].errors | keyvalue">
+          <div >
+            {{ getErrorMessage(error, field.key) }}
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ submitText }}</button>

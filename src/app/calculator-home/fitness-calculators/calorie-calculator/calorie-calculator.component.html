@@ -5,7 +5,7 @@
   <p>Using the <a href="https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation" target="_blank">Harris–Benedict equation</a> as revised by Mifflin and St Jeor in 1990</p>
 </div>
 
-<app-calc [formConfig]="formConfig" (formSubmitted)="calculateCalories($event)"></app-calc>
+<app-calc [formConfig]="formConfig" (submitForm)="calculateCalories($event)"></app-calc>
 
 <!-- <div id="maincontainer" ng-app="app" ng-controller="mainController">
 
