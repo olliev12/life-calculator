@@ -21,7 +21,7 @@ export class CalculatorComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.selectedType);
+
   }
 
   typeIs(typeName: string): boolean {

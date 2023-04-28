@@ -1,1 +1,103 @@
-<p>calorie-calculator works!</p>
+
+<div>
+<div id="title">
+  <h3>Angular Calorie Calculator</h3>
+  <p>Using the <a href="https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation" target="_blank">Harris–Benedict equation</a> as revised by Mifflin and St Jeor in 1990</p>
+</div>
+
+<div id="maincontainer" ng-app="app" ng-controller="mainController">
+
+  <div id="calulatorContainer">
+    <div id="resultsSection">
+      <h3>Results (in kJ)</h3>
+      <div id="results">
+        <p>Your <a href="https://en.wikipedia.org/wiki/Basal_metabolic_rate" target="_blank">BMR</a> = {{bmr ()}}</p>
+        <p>Required daily cals = {{cals ()}} </p>
+        <p>Daily Protein cals = {{proteinCals ()}} </p>
+        <p>Daily Carbs cals = {{carbsCals ()}}</p>
+        <p>Daily Fat cals = {{fatCals ()}}</p>
+      </div>
+      <!--closing div for results-->
+    </div>
+    <!--closing div for results section-->
+      <div class="form-group">
+      <div class="form">
+        <input type="number" class="form-control" placeholder="Weight in Kgs" ng-model="weight">
+      </div>
+      <div class="form">
+        <input type="number" class="form-control" placeholder="Age" ng-model="age">
+      </div>
+      <div class="form">
+        <input type="number" class="form-control" placeholder="Height in cm" ng-model="height">
+      </div>
+      <div id="activity">
+        <!--the as in ng-options selects the current value in the dropdown and allows it to be stored in ng-model-->
+        <select class="form-control" ng-options="x as x.name for x in activities" ng-model="selectedActivity">
+          <option value="">Select activity level...</option>
+        </select>
+      </div>
+      <!--closing div for activity dropdown-->
+      <div id="goal">
+        <select class="form-control" ng-options="x as x.name for x in goals" ng-model="selectedGoal">
+          <option value="">Select your goal...</option>
+        </select>
+      </div>
+      <!--closing div for goal-->
+      <div id="gender">
+        <label class="radio-inline"><input type="radio" name="optradio" ng-model="gender" value="male">Male</label>
+        <label class="radio-inline"><input type="radio" name="optradio" ng-model="gender" value="female">Female</label>
+      </div>
+      <!--closing div for radio gender-->
+    </div>
+  </div>
+  <!--closing div for calculator container-->
+
+  <!--closing div for exercise container-->
+  </div>
+<!--closing div for main container-->
+<div>
+  <h2>Calorie Calculator</h2>
+  <form (ngSubmit)="calculateCalories()">
+    <label>Age:</label>
+    <input type="number" [(ngModel)]="age" name="age" required>
+
+    <label>Sex:</label>
+    <select [(ngModel)]="sex" name="sex" required>
+      <option value="">--Select--</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+
+    <label>Weight (lbs):</label>
+    <input type="number" [(ngModel)]="weight" name="weight" required>
+
+    <label>Height (in):</label>
+    <input type="number" [(ngModel)]="height" name="height" required>
+
+    <label>Activity Level:</label>
+    <select [(ngModel)]="activity" name="activity" required>
+      <option value="">--Select--</option>
+      <option value="Sedentary">Sedentary</option>
+      <option value="Lightly Active">Lightly Active</option>
+      <option value="Moderately Active">Moderately Active</option>
+      <option value="Very Active">Very Active</option>
+      <option value="Extremely Active">Extremely Active</option>
+    </select>
+
+    <label>Weight Goal:</label>
+    <select [(ngModel)]="goal" name="goal" required>
+      <option value="">--Select--</option>
+      <option value="Lose">Lose Weight</option>
+      <option value="Maintain">Maintain Weight</option>
+      <option value="Gain">Gain Weight</option>
+    </select>
+
+    <button type="submit">Calculate</button>
+  </form>
+  <div *ngIf="calories">
+    <p>Your daily calorie needs are {{calories}} calories.</p>
+  </div>
+</div>
+
+
+</div>
