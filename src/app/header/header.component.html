@@ -1,29 +1,34 @@
 <div class="header-wrapper">
   <mat-toolbar color="primary">
-    <mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!isMobile">
+      <span>Life Calculator</span>
+      <span class="example-spacer"></span>
+      <div class="example-spacer" *ngFor="let calculator of calculators">
+        <a
+          [href]="appGlobal.calculatorTypeRoute(calculator)"
+          [routerLink]="appGlobal.calculatorTypeRoute(calculator)"
+          (click)="appGlobal.noHref()"
+          >{{calculator.label}}</a>
+      </div>
+      <span class="example-spacer"></span>
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button> -->
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="isMobile">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
+      <span>Life Calculator</span>
+      <!-- <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>
-      </button>
+      </button> -->
     </mat-toolbar-row>
-
-    <!-- <mat-toolbar-row *ngIf="menuOpen">
-      <span>Second Line</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-    </mat-toolbar-row> -->
 
   </mat-toolbar>
 </div>

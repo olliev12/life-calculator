@@ -4,16 +4,11 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .body-wrapper {
-  padding: 10px;
-  min-height: -webkit-fill-available;
-}
-
-.menu-closed {
+  padding: 20px;
+  min-height: 100%;
   margin-top: 56px;
 }
-.menu-opened {
-  margin-top: 112px;
-}
+
 
 ul.no-bullets {
   list-style-type: none;

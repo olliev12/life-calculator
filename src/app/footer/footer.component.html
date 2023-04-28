@@ -1,13 +1,29 @@
 <div class="footer-wrapper">
   <mat-toolbar color="accent">
     <mat-toolbar-row>
-      <span>My App</span>
+      <span>Second Line</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
       </button>
     </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span class="example-spacer"></span>
+        <a class="bottom-link" *ngFor="let page of pages"
+          [href]="appGlobal.calculatorTypeRoute(page)"
+          [routerLink]="appGlobal.calculatorTypeRoute(page)"
+          (click)="appGlobal.noHref()"
+        >
+          <p class="bottom-link-text">{{page.label}}</p>
+        </a>
+      <span class="example-spacer"></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
+  <!-- <mat-toolbar color="accent" *ngIf="isMobile">
     <mat-toolbar-row>
       <span>Second Line</span>
       <span class="example-spacer"></span>
@@ -18,5 +34,15 @@
         <mat-icon>share</mat-icon>
       </button>
     </mat-toolbar-row>
-  </mat-toolbar>
+    <mat-toolbar-row>
+      <div class="example-spacer" *ngFor="let page of pages">
+        <a
+          [href]="appGlobal.calculatorTypeRoute(page)"
+          [routerLink]="appGlobal.calculatorTypeRoute(page)"
+          (click)="appGlobal.noHref()"
+          >{{page.label}}</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar> -->
+
 </div>

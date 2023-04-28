@@ -1,3 +1,23 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <p class="title">Life Calculator</p>
+    <hr>
+    <ul>
+      <li class="nav-list-item" *ngFor="let calculator of calculators">
+        <a
+          [href]="appGlobal.calculatorTypeRoute(calculator)"
+          [routerLink]="appGlobal.calculatorTypeRoute(calculator)"
+          (click)="mobileNav()"
+        >{{calculator.label}}</a>
+      </li>
+    </ul>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
+
+</mat-drawer-container>

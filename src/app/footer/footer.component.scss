@@ -3,3 +3,26 @@
   bottom: 0px;
   width: 100%;
 }
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.bottom-link {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: whitesmoke;
+  font-size: medium;
+}
+
+@media only screen and (max-width: 767px) {
+  .bottom-link {
+    font-size: small;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .bottom-link {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
