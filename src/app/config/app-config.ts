@@ -29,7 +29,7 @@ export interface FormConfig {
   [key: string]: FormField;
 }
 
-export const calorieConfig: FormConfig = {
+export const exampleConfig: FormConfig = {
   name: {
     type: 'text',
     label: 'Name',
@@ -54,21 +54,67 @@ export const calorieConfig: FormConfig = {
     value: '',
     radioOptions: [
       { label: 'Male', value: 'male' },
-      { label: 'Female', value: 'female' },
-      { label: 'Other', value: 'other' }
+      { label: 'Female', value: 'female' }
     ],
     validators: [Validators.required],
     valueAccessor: RadioGroupComponent
   },
-  country: {
+  activity: {
     type: 'select',
-    label: 'Country',
+    label: 'Activity',
     value: '',
     selectOptions: [
-      { label: 'United States', value: 'us' },
-      { label: 'Canada', value: 'ca' },
-      { label: 'Mexico', value: 'mx' }
+      {label: 'Little to no exercise', value: 1.2},
+      {label: 'Light exercise (1-3 days per week)', value: 1.375},
+      {label: 'Moderate exercise (3-5 days per week)', value: 1.55},
+      {label: 'Heavy exercise (6-7 days per week)', value: 1.725},
+      {label: 'Very heavy exercise (twice per day, extra heavy workouts)', value: 1.9}
     ],
+    validators: [Validators.required]
+  }
+};
+
+export const calorieConfig: FormConfig = {
+  gender: {
+    type: 'radio',
+    label: 'Gender',
+    value: '',
+    radioOptions: [
+      { label: 'Male', value: 'male' },
+      { label: 'Female', value: 'female' }
+    ],
+    validators: [Validators.required],
+    valueAccessor: RadioGroupComponent
+  },
+  activity: {
+    type: 'select',
+    label: 'Activity',
+    value: '',
+    selectOptions: [
+      {label: 'Little to no exercise', value: 1.2},
+      {label: 'Light exercise (1-3 days per week)', value: 1.375},
+      {label: 'Moderate exercise (3-5 days per week)', value: 1.55},
+      {label: 'Heavy exercise (6-7 days per week)', value: 1.725},
+      {label: 'Very heavy exercise (twice per day, extra heavy workouts)', value: 1.9}
+    ],
+    validators: [Validators.required]
+  },
+  age: {
+    type: 'number',
+    label: 'Age',
+    value: '',
+    validators: [Validators.required]
+  },
+  weight: {
+    type: 'number',
+    label: 'Weight',
+    value: '',
+    validators: [Validators.required]
+  },
+  height: {
+    type: 'number',
+    label: 'Height',
+    value: '',
     validators: [Validators.required]
   }
 };

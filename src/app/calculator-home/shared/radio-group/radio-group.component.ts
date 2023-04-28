@@ -5,7 +5,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'app-radio-group',
   template: `
     <div class="form-group">
-      <label>{{ label }}</label>
+      <!-- <label>{{ label }}</label> -->
       <div *ngFor="let option of options">
         <input
           type="radio"
