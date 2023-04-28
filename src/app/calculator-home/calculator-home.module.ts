@@ -13,7 +13,8 @@ import { PasswordGeneratorComponent } from './other-calculators/password-generat
 import { StandardCalculatorComponent } from './math-calculators/standard-calculator/standard-calculator.component';
 import { RentCalculatorComponent } from './financial-calculators/rent-calculator/rent-calculator.component';
 import { CalorieCalculatorComponent } from './fitness-calculators/calorie-calculator/calorie-calculator.component';
-import { CalcComponent } from './shared/calc/calc/calc.component';
+import { CalcComponent } from './shared/calc/calc.component';
+import { RadioGroupComponent } from './shared/radio-group/radio-group.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -31,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StandardCalculatorComponent,
     RentCalculatorComponent,
     CalorieCalculatorComponent,
-    CalcComponent
+    CalcComponent,
+    RadioGroupComponent
   ],
   imports: [
     CommonModule,

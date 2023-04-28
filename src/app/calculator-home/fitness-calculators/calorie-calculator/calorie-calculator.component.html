@@ -5,7 +5,9 @@
   <p>Using the <a href="https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation" target="_blank">Harris–Benedict equation</a> as revised by Mifflin and St Jeor in 1990</p>
 </div>
 
-<div id="maincontainer" ng-app="app" ng-controller="mainController">
+<app-calc [formConfig]="formConfig" (formSubmitted)="calculateCalories($event)"></app-calc>
+
+<!-- <div id="maincontainer" ng-app="app" ng-controller="mainController">
 
   <div id="calulatorContainer">
     <div id="resultsSection">
@@ -17,9 +19,9 @@
         <p>Daily Carbs cals = {{carbsCals ()}}</p>
         <p>Daily Fat cals = {{fatCals ()}}</p>
       </div>
-      <!--closing div for results-->
+      <!--closing div for results--
     </div>
-    <!--closing div for results section-->
+    <!--closing div for results section--
       <div class="form-group">
       <div class="form">
         <input type="number" class="form-control" placeholder="Weight in Kgs" ng-model="weight">
@@ -31,30 +33,30 @@
         <input type="number" class="form-control" placeholder="Height in cm" ng-model="height">
       </div>
       <div id="activity">
-        <!--the as in ng-options selects the current value in the dropdown and allows it to be stored in ng-model-->
+        <!--the as in ng-options selects the current value in the dropdown and allows it to be stored in ng-model--
         <select class="form-control" ng-options="x as x.name for x in activities" ng-model="selectedActivity">
           <option value="">Select activity level...</option>
         </select>
       </div>
-      <!--closing div for activity dropdown-->
+      <!--closing div for activity dropdown--
       <div id="goal">
         <select class="form-control" ng-options="x as x.name for x in goals" ng-model="selectedGoal">
           <option value="">Select your goal...</option>
         </select>
       </div>
-      <!--closing div for goal-->
+      <!--closing div for goal--
       <div id="gender">
         <label class="radio-inline"><input type="radio" name="optradio" ng-model="gender" value="male">Male</label>
         <label class="radio-inline"><input type="radio" name="optradio" ng-model="gender" value="female">Female</label>
       </div>
-      <!--closing div for radio gender-->
+      <!--closing div for radio gender--
     </div>
   </div>
-  <!--closing div for calculator container-->
+  <!--closing div for calculator container--
 
-  <!--closing div for exercise container-->
+  <!--closing div for exercise container--
   </div>
-<!--closing div for main container-->
+<!--closing div for main container--
 <div>
   <h2>Calorie Calculator</h2>
   <form (ngSubmit)="calculateCalories()">
@@ -97,7 +99,7 @@
   <div *ngIf="calories">
     <p>Your daily calorie needs are {{calories}} calories.</p>
   </div>
-</div>
+</div> -->
 
 
 </div>

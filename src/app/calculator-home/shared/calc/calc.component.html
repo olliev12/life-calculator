@@ -7,27 +7,53 @@
 </form> -->
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div *ngFor="let field of fields">
-    <label>{{ field.label }}</label>
-    <div [ngSwitch]="field.type">
+  <div *ngFor="let field of formConfig | keyvalue" class="form-group">
+    <label [attr.for]="field.key">{{ field.value.label }}</label>
+    <div [ngSwitch]="field.value.type">
       <input
         *ngSwitchCase="'text'"
+        type="text"
+        class="form-control"
         [formControlName]="field.key"
-        [type]="field.type"
+        [placeholder]="field.value.placeholder"
+      />
+      <input
+        *ngSwitchCase="'number'"
+        type="number"
+        class="form-control"
+        [formControlName]="field.key"
+        [placeholder]="field.value.placeholder"
       />
       <select
         *ngSwitchCase="'select'"
+        class="form-control"
         [formControlName]="field.key"
       >
-        <option *ngFor="let option of field.selectOptions" [value]="option.value">{{ option.label }}</option>
-      </select>
-      <div *ngSwitchCase="'radio'" class="radio-group" [formControlName]="field.key">
-        <label *ngFor="let option of field.radioOptions">
-          <input type="radio" [value]="option.value" />
+        <option *ngFor="let option of field.value.selectOptions" [value]="option.value">
           {{ option.label }}
-        </label>
+        </option>
+      </select>
+      <div *ngSwitchCase="'radio'">
+        <app-radio-group
+          [name]="field.key"
+          [label]="field.value.label!"
+          [options]="field.value.radioOptions!"
+          [formControlName]="field.key"
+        ></app-radio-group>
       </div>
     </div>
+    <!-- TODO figure out validators -->
+    <!-- <div *ngIf="form.controls[field.key].invalid && (form.controls[field.key].dirty || form.controls[field.key].touched)">
+      <div class="alert alert-danger">
+        <div *ngFor="let validation of field.value.validators">
+          <div *ngIf="form.controls[field.key].hasError(validation.type)">
+            {{ validation.message }}
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
-  <button type="submit" [disabled]="!form.valid">Submit</button>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ submitText }}</button>
+  </div>
 </form>

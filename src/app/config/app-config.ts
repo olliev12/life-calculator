@@ -1,4 +1,5 @@
-import { ValidatorFn } from "@angular/forms";
+import { ValidatorFn, Validators } from "@angular/forms";
+import { RadioGroupComponent } from "../calculator-home/shared/radio-group/radio-group.component";
 
 export interface CalculatorType {
   name: string,
@@ -17,12 +18,58 @@ export interface FormConfig {
   [key: string]: {
     type: string;
     label?: string;
+    placeholder?:string;
     value?: any;
     validators: ValidatorFn[];
+    valueAccessor?: any;
     selectOptions?: { label: string; value: any }[]; // define selectOptions property for dropdown fields
     radioOptions?: { label: string; value: any }[]; // define radioOptions property for radio button fields
   };
 }
+
+export const calorieConfig: FormConfig = {
+  name: {
+    type: 'text',
+    label: 'Name',
+    value: '',
+    validators: [Validators.required]
+  },
+  email: {
+    type: 'text',
+    label: 'Email',
+    value: '',
+    validators: [Validators.required, Validators.email]
+  },
+  password: {
+    type: 'text',
+    label: 'Password',
+    value: '',
+    validators: [Validators.required, Validators.minLength(6)]
+  },
+  gender: {
+    type: 'radio',
+    label: 'Gender',
+    value: '',
+    radioOptions: [
+      { label: 'Male', value: 'male' },
+      { label: 'Female', value: 'female' },
+      { label: 'Other', value: 'other' }
+    ],
+    validators: [Validators.required],
+    valueAccessor: RadioGroupComponent
+  },
+  country: {
+    type: 'select',
+    label: 'Country',
+    value: '',
+    selectOptions: [
+      { label: 'United States', value: 'us' },
+      { label: 'Canada', value: 'ca' },
+      { label: 'Mexico', value: 'mx' }
+    ],
+    validators: [Validators.required]
+  }
+};
 
 export const fitnessCalculators: Calculator[] = [
   {
