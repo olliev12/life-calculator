@@ -1,3 +1,37 @@
 <h2>{{ heading }}</h2>
 <app-content-block-item *ngFor="let item of allInputs" [item]="item"></app-content-block-item>
 
+<!-- Probably going to move to this implementation -->
+<!-- <h2>{{ heading }}</h2>
+<div *ngFor="let item of items?.sort((a, b) => a.order - b.order)">
+  <ng-container [ngSwitch]="item.type">
+    <p *ngSwitchCase="ContentBlockItemType.Paragraph">{{ item.content }}</p>
+    <ul *ngSwitchCase="ContentBlockItemType.UnorderedList">
+      <li *ngFor="let childItem of item.children">{{ childItem.content }}</li>
+    </ul>
+    <table *ngSwitchCase="ContentBlockItemType.Table">
+      <tr *ngFor="let row of item.children">
+        <td *ngFor="let cell of row">{{ cell.content }}</td>
+      </tr>
+    </table>
+    <img *ngSwitchCase="ContentBlockItemType.Image" [src]="item.content" alt="">
+  </ng-container>
+  <app-content-block *ngIf="item.children" [items]="item.children"></app-content-block>
+</div> -->
+
+<!-- <table *ngSwitchCase="ContentBlockItemType.Table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of item.children?.filter(child => child.type === ContentBlockItemType.Paragraph)">
+        {{ header.content }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of item.children?.filter(child => child.type === ContentBlockItemType.TableRow)">
+      <td *ngFor="let cell of row.children?.filter(child => child.type === ContentBlockItemType.TableCell)">
+        {{ cell.content }}
+      </td>
+    </tr>
+  </tbody>
+</table> -->
