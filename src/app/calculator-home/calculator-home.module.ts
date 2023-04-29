@@ -18,7 +18,6 @@ import { RadioGroupComponent } from './shared/radio-group/radio-group.component'
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContentBlockComponent } from './shared/content-block/content-block.component';
-import { ContentBlockItemComponent } from './shared/content-block/content-block-item/content-block-item.component';
 
 
 @NgModule({
@@ -36,8 +35,7 @@ import { ContentBlockItemComponent } from './shared/content-block/content-block-
     CalorieCalculatorComponent,
     CalcComponent,
     RadioGroupComponent,
-    ContentBlockComponent,
-    ContentBlockItemComponent
+    ContentBlockComponent
   ],
   imports: [
     CommonModule,

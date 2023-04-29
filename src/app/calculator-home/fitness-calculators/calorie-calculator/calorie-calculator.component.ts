@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as AppConfig  from 'src/app/config/app-config';
 import { AppGlobal } from 'src/app/services/app-global';
+import { ContentBlockItem, ContentBlockItemType } from '../../shared/content-block/content-block.component';
 
 export interface Activity {
   name: string,
@@ -77,6 +78,118 @@ export class CalorieCalculatorComponent {
 
   //   }
   // }
+  para1: ContentBlockItem = {
+    content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+    an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    It has survived not only five centuries, but also the leap into electronic typesetting,
+    remaining essentially unchanged. It was popularised in the 1960s with the release of
+    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+    software like Aldus PageMaker including versions of Lorem Ipsum.
+    `,
+    order: 0,
+    type: ContentBlockItemType.Paragraph
+  }
+
+  table: ContentBlockItem = {
+    content: '',
+    order: 4,
+    type: ContentBlockItemType.Table,
+    children: [
+      {
+        content: '',
+        order: 0,
+        type: ContentBlockItemType.TableHeader,
+        children: [
+          {
+            content: 'Header 1',
+            order: 1,
+            type: ContentBlockItemType.Paragraph
+          },
+          {
+            content: 'Header 2',
+            order: 2,
+            type: ContentBlockItemType.Paragraph
+          },
+          {
+            content: 'Header 3',
+            order: 3,
+            type: ContentBlockItemType.Paragraph
+          }
+        ]
+      },
+      {
+        content: '',
+        order: 4,
+        type: ContentBlockItemType.TableRow,
+        children: [
+          {
+            content: 'Cell 1,1',
+            order: 1,
+            type: ContentBlockItemType.TableCell
+          },
+          {
+            content: 'Cell 1,2',
+            order: 2,
+            type: ContentBlockItemType.TableCell
+          },
+          {
+            content: 'Cell 1,3',
+            order: 3,
+            type: ContentBlockItemType.TableCell
+          }
+        ]
+      },
+      {
+        content: '',
+        order: 5,
+        type: ContentBlockItemType.TableRow,
+        children: [
+          {
+            content: 'Cell 2,1',
+            order: 1,
+            type: ContentBlockItemType.TableCell
+          },
+          {
+            content: 'Cell 2,2',
+            order: 2,
+            type: ContentBlockItemType.TableCell
+          },
+          {
+            content: 'Cell 2,3',
+            order: 3,
+            type: ContentBlockItemType.TableCell
+          }
+        ]
+      }
+    ]
+  };
+
+  list: ContentBlockItem = {
+    content: '',
+    order: 2,
+    type: ContentBlockItemType.UnorderedList,
+    children: [
+      {
+        content: 'List item 1',
+        order: 1,
+        type: ContentBlockItemType.Paragraph
+      },
+      {
+        content: 'List item 2',
+        order: 2,
+        type: ContentBlockItemType.Paragraph
+      },
+      {
+        content: 'List item 3',
+        order: 3,
+        type: ContentBlockItemType.Paragraph
+      }
+    ]
+  }
+
+  header: string = 'Sample Heading'
+  items: ContentBlockItem[] = [this.para1, this.table, this.list]
   constructor() {
 
   }
