@@ -10,8 +10,12 @@ import { Component, Input } from '@angular/core';
 
 export enum ContentBlockItemType {
   Paragraph = 'paragraph',
+  CenterParagraph = 'center-paragraph',
+  Text = 'text',
+  Link = 'link',
   UnorderedList = 'unordered-list',
   OrderedList = 'ordered-list',
+  ListItem = 'list-item',
   Table = 'table',
   Image = 'image',
   TableCell = "TableCell",
@@ -23,7 +27,15 @@ export interface ContentBlockItem {
   content: string;
   order: number;
   type: ContentBlockItemType;
-  children?: ContentBlockItem[]
+  children?: ContentBlockItem[];
+  heading?: string;
+  linkAddress?: string;
+  styles?: string[];
+}
+
+export interface ContentBlockItemConfig {
+  header?: string;
+  items: ContentBlockItem[]
 }
 
 @Component({
@@ -33,9 +45,7 @@ export interface ContentBlockItem {
 })
 export class ContentBlockComponent {
   ContentBlockItemType = ContentBlockItemType;
-  @Input() heading!: string;
-  @Input () items!: ContentBlockItem[];
-
+  @Input () itemConfig!: ContentBlockItemConfig;
 
   //traverse all inputs and determine the overall order
   ngOnInit() {
@@ -44,5 +54,17 @@ export class ContentBlockComponent {
 
   sortOrder(items: ContentBlockItem[] | undefined) {
     return items?.sort((a, b) => a.order - b.order);
+  }
+
+  createConfigFromChildren(items: ContentBlockItem[]): ContentBlockItemConfig {
+    return {
+      header: '',
+      items: items
+    }
+  }
+
+  multipleClassString(styles: string[] | undefined): string {
+    console.log(styles)
+    return styles? styles.join(' ') : '';
   }
 }

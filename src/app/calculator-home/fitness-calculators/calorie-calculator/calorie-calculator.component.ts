@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as AppConfig  from 'src/app/config/app-config';
 import { AppGlobal } from 'src/app/services/app-global';
-import { ContentBlockItem, ContentBlockItemType } from '../../shared/content-block/content-block.component';
+import { ContentBlockItem, ContentBlockItemConfig, ContentBlockItemType } from '../../shared/content-block/content-block.component';
 
 export interface Activity {
   name: string,
@@ -88,12 +88,49 @@ export class CalorieCalculatorComponent {
     software like Aldus PageMaker including versions of Lorem Ipsum.
     `,
     order: 0,
-    type: ContentBlockItemType.Paragraph
+    type: ContentBlockItemType.Paragraph,
+    heading: 'Sub Heading'
+  }
+
+  cPara: ContentBlockItem = {
+    content: '2 + 2 = 4',
+    order: 1,
+    type: ContentBlockItemType.CenterParagraph
+  }
+
+  styledPara: ContentBlockItem = {
+    content: '',
+    order: 2,
+    type: ContentBlockItemType.Paragraph,
+    children: [
+      {
+        content: 'Some thing something some things ar some thing',
+        order: 0,
+        type: ContentBlockItemType.Text
+      },
+      {
+        content: 'this should be link text',
+        order: 1,
+        type: ContentBlockItemType.Link,
+        linkAddress: 'https://www.google.com'
+      },
+      {
+        content: 'Some thing something some things ar some thing',
+        order: 2,
+        type: ContentBlockItemType.Text
+      },
+      {
+        content: 'Some thing something some things ar some thing',
+        order: 3,
+        type: ContentBlockItemType.Text,
+        styles: ['bold']
+      },
+    ]
   }
 
   table: ContentBlockItem = {
     content: '',
-    order: 4,
+    order: 5,
     type: ContentBlockItemType.Table,
     children: [
       {
@@ -115,6 +152,18 @@ export class CalorieCalculatorComponent {
             content: 'Header 3',
             order: 3,
             type: ContentBlockItemType.Paragraph
+          }
+        ]
+      },
+      {
+        content: '',
+        order: 2,
+        type: ContentBlockItemType.TableRow,
+        children: [
+          {
+            content: 'Cell 1,1',
+            order: 1,
+            type: ContentBlockItemType.TableCell
           }
         ]
       },
@@ -167,7 +216,7 @@ export class CalorieCalculatorComponent {
 
   list: ContentBlockItem = {
     content: '',
-    order: 2,
+    order: 3,
     type: ContentBlockItemType.UnorderedList,
     children: [
       {
@@ -188,8 +237,40 @@ export class CalorieCalculatorComponent {
     ]
   }
 
+  list2: ContentBlockItem = {
+    content: '',
+    order: 4,
+    type: ContentBlockItemType.OrderedList,
+    heading: 'Sub heading again',
+    children: [
+      {
+        content: 'List item 1',
+        heading: 'Heading 1',
+        order: 1,
+        type: ContentBlockItemType.ListItem
+      },
+      {
+        content: 'List item 2',
+        heading: 'Heading 1',
+        order: 2,
+        type: ContentBlockItemType.ListItem
+      },
+      {
+        content: 'List item 3',
+        heading: 'Heading 1',
+        order: 3,
+        type: ContentBlockItemType.ListItem
+      }
+    ]
+  }
+
   header: string = 'Sample Heading'
-  items: ContentBlockItem[] = [this.para1, this.table, this.list]
+  items: ContentBlockItem[] = [this.para1, this.styledPara, this.table, this.list, this.list2]
+  itemConfig: ContentBlockItemConfig = {
+    header: this.header,
+    items: this.items
+  }
+  itemConfigArr: ContentBlockItemConfig[] = [this.itemConfig];
   constructor() {
 
   }

@@ -2,14 +2,33 @@
 <!-- <app-content-block-item *ngFor="let item of allInputs" [item]="item"></app-content-block-item> -->
 
 <!-- Probably going to move to this implementation -->
-<h2>{{ heading }}</h2>
-<div *ngFor="let item of sortOrder(items)">
+<h2 *ngIf="itemConfig.header">{{ itemConfig.header }}</h2>
+<div *ngFor="let item of sortOrder(itemConfig.items)">
   <ng-container [ngSwitch]="item.type">
-    <p *ngSwitchCase="ContentBlockItemType.Paragraph">{{ item.content }}</p>
-    <ul *ngSwitchCase="ContentBlockItemType.UnorderedList">
-      <li *ngFor="let childItem of item.children">{{ childItem.content }}</li>
+    <h3 [class]="multipleClassString(item.styles)" *ngIf="item.heading">{{item.heading}}</h3>
+    <p [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.Paragraph">
+      {{ item.content }}
+      <span [class]="multipleClassString(childItem.styles)" *ngFor="let childItem of sortOrder(item.children)" [ngSwitch]="childItem.type">
+        <a *ngSwitchCase="ContentBlockItemType.Link" href="childItem.linkAddress">
+          {{childItem.content}}
+        </a>
+        <span *ngSwitchCase="ContentBlockItemType.Text">
+          {{childItem.content}}
+        </span>
+      </span>
+    </p>
+    <!-- <p *ngSwitchCase="ContentBlockItemType.CenterParagraph">{{ item.content }}</p> -->
+    <ul [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.UnorderedList">
+      <li *ngFor="let childItem of item.children">
+        <span *ngIf="childItem.heading">{{childItem.heading}} - </span>{{ childItem.content }}
+      </li>
     </ul>
-    <img *ngSwitchCase="ContentBlockItemType.Image" [src]="item.content" alt="">
+    <ol [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.OrderedList">
+      <li *ngFor="let childItem of item.children">
+        <span *ngIf="childItem.heading">{{childItem.heading}} - </span>{{ childItem.content }}
+      </li>
+    </ol>
+    <img [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.Image" [src]="item.content" alt="">
     <ng-container *ngSwitchCase="ContentBlockItemType.Table" [ngSwitch]="sortOrder(item.children)![0].type">
       <table *ngSwitchCase="ContentBlockItemType.TableHeader">
         <thead>
@@ -34,7 +53,7 @@
       </table>
     </ng-container>
   </ng-container>
-  <!-- <app-content-block *ngIf="item.children" [items]="item.children"></app-content-block> -->
+  <!-- <app-content-block *ngIf="item.children" [itemConfig]="createConfigFromChildren(item.children)"></app-content-block> -->
 </div>
 
 <br>
