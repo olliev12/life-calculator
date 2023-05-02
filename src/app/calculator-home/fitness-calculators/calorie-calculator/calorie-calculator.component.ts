@@ -92,16 +92,11 @@ export class CalorieCalculatorComponent {
     heading: 'Sub Heading'
   }
 
-  cPara: ContentBlockItem = {
-    content: '2 + 2 = 4',
-    order: 1,
-    type: ContentBlockItemType.CenterParagraph
-  }
-
   styledPara: ContentBlockItem = {
     content: '',
     order: 2,
     type: ContentBlockItemType.Paragraph,
+    styles: ['center'],
     children: [
       {
         content: 'Some thing something some things ar some thing',
@@ -123,7 +118,7 @@ export class CalorieCalculatorComponent {
         content: 'Some thing something some things ar some thing',
         order: 3,
         type: ContentBlockItemType.Text,
-        styles: ['bold']
+        styles: ['bold', 'upper']
       },
     ]
   }

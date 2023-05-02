@@ -10,17 +10,17 @@ import { Component, Input } from '@angular/core';
 
 export enum ContentBlockItemType {
   Paragraph = 'paragraph',
-  CenterParagraph = 'center-paragraph',
   Text = 'text',
   Link = 'link',
+  InternalLink = 'internal-link',
   UnorderedList = 'unordered-list',
   OrderedList = 'ordered-list',
   ListItem = 'list-item',
   Table = 'table',
   Image = 'image',
-  TableCell = "TableCell",
-  TableRow = "TableRow",
-  TableHeader = 'TableHeader'
+  TableCell = "table-cell",
+  TableRow = "table-row",
+  TableHeader = 'table-header'
 }
 
 export interface ContentBlockItem {
@@ -64,7 +64,6 @@ export class ContentBlockComponent {
   }
 
   multipleClassString(styles: string[] | undefined): string {
-    console.log(styles)
     return styles? styles.join(' ') : '';
   }
 }

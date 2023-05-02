@@ -1,5 +1,3 @@
-<!-- <h2>{{ heading }}</h2> -->
-<!-- <app-content-block-item *ngFor="let item of allInputs" [item]="item"></app-content-block-item> -->
 
 <!-- Probably going to move to this implementation -->
 <h2 *ngIf="itemConfig.header">{{ itemConfig.header }}</h2>
@@ -9,7 +7,10 @@
     <p [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.Paragraph">
       {{ item.content }}
       <span [class]="multipleClassString(childItem.styles)" *ngFor="let childItem of sortOrder(item.children)" [ngSwitch]="childItem.type">
-        <a *ngSwitchCase="ContentBlockItemType.Link" href="childItem.linkAddress">
+        <a *ngSwitchCase="ContentBlockItemType.Link" [href]="childItem.linkAddress" target="_blank">
+          {{childItem.content}}
+        </a>
+        <a *ngSwitchCase="ContentBlockItemType.InternalLink" [href]="childItem.linkAddress">
           {{childItem.content}}
         </a>
         <span *ngSwitchCase="ContentBlockItemType.Text">
@@ -17,7 +18,6 @@
         </span>
       </span>
     </p>
-    <!-- <p *ngSwitchCase="ContentBlockItemType.CenterParagraph">{{ item.content }}</p> -->
     <ul [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.UnorderedList">
       <li *ngFor="let childItem of item.children">
         <span *ngIf="childItem.heading">{{childItem.heading}} - </span>{{ childItem.content }}

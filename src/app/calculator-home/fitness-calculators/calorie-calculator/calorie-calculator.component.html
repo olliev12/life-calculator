@@ -1,15 +1,24 @@
 
 <div>
-<div id="title">
+<!-- <div id="title">
   <h3>Angular Calorie Calculator</h3>
   <p>Using the <a href="https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation" target="_blank">Harris–Benedict equation</a> as revised by Mifflin and St Jeor in 1990</p>
-</div>
+</div> -->
 
+<!-- Everything below this can be made into a separate component for all calc pages -->
 <div class="row">
   <div class="col-md-8">
-    <app-calc [formConfig]="formConfig" (submitForm)="calculateCalories($event)"></app-calc>
+    <div class="row">
+      <div class="col-md-7">
+        <app-calc [formConfig]="formConfig" (submitForm)="calculateCalories($event)"></app-calc>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <!-- Results component -->
+      </div>
+    </div>
     <br>
-    <h2>Content</h2>
+    <!-- Related row -->
     <br>
     <app-content-block *ngFor="let config of itemConfigArr" [itemConfig]="config"></app-content-block>
   </div>
