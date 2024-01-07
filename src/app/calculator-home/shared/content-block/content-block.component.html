@@ -3,17 +3,17 @@
 <h2 *ngIf="itemConfig.header">{{ itemConfig.header }}</h2>
 <div *ngFor="let item of sortOrder(itemConfig.items)">
   <ng-container [ngSwitch]="item.type">
-    <h3 [class]="multipleClassString(item.styles)" *ngIf="item.heading">{{item.heading}}</h3>
+    <h3 id="item-heading" [class]="multipleClassString(item.styles)" *ngIf="item.heading">{{item.heading}}</h3>
     <p [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.Paragraph">
       {{ item.content }}
-      <span [class]="multipleClassString(childItem.styles)" *ngFor="let childItem of sortOrder(item.children)" [ngSwitch]="childItem.type">
-        <a *ngSwitchCase="ContentBlockItemType.Link" [href]="childItem.linkAddress" target="_blank">
+      <span  *ngFor="let childItem of sortOrder(item.children)" [ngSwitch]="childItem.type">
+        <a [class]="multipleClassString(childItem.styles)" *ngSwitchCase="ContentBlockItemType.Link" [href]="childItem.linkAddress" target="_blank">
           {{childItem.content}}
         </a>
-        <a *ngSwitchCase="ContentBlockItemType.InternalLink" [href]="childItem.linkAddress">
+        <a [class]="multipleClassString(childItem.styles)" *ngSwitchCase="ContentBlockItemType.InternalLink" [href]="childItem.linkAddress">
           {{childItem.content}}
         </a>
-        <span *ngSwitchCase="ContentBlockItemType.Text">
+        <span [class]="multipleClassString(childItem.styles)" *ngSwitchCase="ContentBlockItemType.Text">
           {{childItem.content}}
         </span>
       </span>
@@ -29,29 +29,22 @@
       </li>
     </ol>
     <img [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.Image" [src]="item.content" alt="">
-    <ng-container *ngSwitchCase="ContentBlockItemType.Table" [ngSwitch]="sortOrder(item.children)![0].type">
-      <table *ngSwitchCase="ContentBlockItemType.TableHeader">
-        <thead>
-          <tr *ngFor="let header of [sortOrder(item.children)![0]]">
-            <th *ngFor="let cell of sortOrder(header.children)">
-              {{ cell.content }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of sortOrder(item.children)!.slice(1)">
-            <td *ngFor="let cell of sortOrder(row.children)">
-              {{ cell.content }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table *ngSwitchDefault>
-        <tr *ngFor="let row of sortOrder(item.children)">
-          <td *ngFor="let cell of sortOrder(row.children)">{{ cell.content }}</td>
+    <table aria-describedby="item-heading" [class]="multipleClassString(item.styles)" *ngSwitchCase="ContentBlockItemType.Table">
+      <thead>
+        <tr *ngFor="let header of [sortOrder(item.children)![0]]" [class]="multipleClassString(header.styles)">
+          <th *ngFor="let cell of sortOrder(header.children)" [class]="multipleClassString(cell.styles)">
+            {{ cell.content }}
+          </th>
         </tr>
-      </table>
-    </ng-container>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of sortOrder(item.children)!.slice(1)" [class]="multipleClassString(row.styles)">
+          <td *ngFor="let cell of sortOrder(row.children)" [class]="multipleClassString(cell.styles)">
+            {{ cell.content }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </ng-container>
   <!-- <app-content-block *ngIf="item.children" [itemConfig]="createConfigFromChildren(item.children)"></app-content-block> -->
 </div>
