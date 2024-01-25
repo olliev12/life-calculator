@@ -9,8 +9,8 @@ import * as AppConfig  from '../config/app-config';
 })
 export class HeaderComponent {
   readonly calculators: AppConfig.CalculatorType[] = AppConfig.calculators;
-  public menuOpen: boolean = false;
-  public isMobile: boolean = false;
+  public menuOpen = false;
+  public isMobile = false;
 
   constructor(public appGlobal: AppGlobal) {
     this.isMobile = window.innerWidth < 767;
@@ -24,7 +24,7 @@ export class HeaderComponent {
   }
 
   @HostListener('window:resize', ['$event'])
-  public checkMobile($event: any) {
+  public checkMobile() {
     this.isMobile = window.innerWidth < 767;
   }
 }

@@ -20,9 +20,9 @@ export class CalculatorComponent {
   ) {
   }
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
 
-  }
+  // }
 
   typeIs(typeName: string): boolean {
     return this.selectedType.name === typeName;

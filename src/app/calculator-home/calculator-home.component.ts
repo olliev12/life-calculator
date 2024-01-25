@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as AppConfig  from '../config/app-config';
 import { AppGlobal } from '../services/app-global';
@@ -13,7 +13,7 @@ export enum Modes {
   templateUrl: './calculator-home.component.html',
   styleUrls: ['./calculator-home.component.scss']
 })
-export class CalculatorHomeComponent {
+export class CalculatorHomeComponent implements OnInit {
   readonly types: AppConfig.CalculatorType[] = AppConfig.calculators;
   readonly Modes = Modes;
   selectedTypes: AppConfig.CalculatorType[] = AppConfig.calculators;
@@ -29,8 +29,8 @@ export class CalculatorHomeComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      let calcType = this.types.find((type) => type.route === params['type']);
-      let childType = calcType?.children.find((child) => child.route === params['child']);
+      const calcType = this.types.find((type) => type.route === params['type']);
+      const childType = calcType?.children.find((child) => child.route === params['child']);
       if (calcType) {
         this.setType([calcType]);
         this.setMode(Modes.overview);
@@ -66,7 +66,7 @@ export class CalculatorHomeComponent {
   }
 
   public typeRoute(): string {
-    let route: string = '';
+    let route = '';
     if (this.isAllCalculators()) {
       route = '/calculators/all';
     }

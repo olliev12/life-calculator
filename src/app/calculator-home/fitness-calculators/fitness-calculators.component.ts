@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as AppConfig  from 'src/app/config/app-config';
-import { AppGlobal } from 'src/app/services/app-global';
+// import { AppGlobal } from 'src/app/services/app-global';
 
 @Component({
   selector: 'app-fitness-calculators',
   templateUrl: './fitness-calculators.component.html',
   styleUrls: ['./fitness-calculators.component.scss']
 })
-export class FitnessCalculatorsComponent {
+export class FitnessCalculatorsComponent implements OnInit {
 
   @Input() selectedType!: AppConfig.CalculatorType;
   @Input() selectedChild!: AppConfig.Calculator;

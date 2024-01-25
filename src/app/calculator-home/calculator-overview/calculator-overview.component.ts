@@ -11,7 +11,7 @@ import { AppGlobal } from 'src/app/services/app-global';
 export class CalculatorOverviewComponent {
   readonly types: AppConfig.CalculatorType[] = AppConfig.calculators;
   @Input() selectedTypes: AppConfig.CalculatorType[] = AppConfig.calculators;
-  @Input() isAllCalculators: boolean = true;
+  @Input() isAllCalculators = true;
 
   constructor(
     public appGlobal: AppGlobal,
@@ -20,9 +20,9 @@ export class CalculatorOverviewComponent {
   ) {
   }
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
 
-  }
+  // }
 
   public calculatorHeading(): string {
     return this.isAllCalculators ? 'All Our Calculators' : `${this.selectedTypes[0].label} Calculators`;

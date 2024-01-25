@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {KeyValue} from '@angular/common';
-import { FormGroup, Validators, ValidatorFn, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormConfig } from './../../../config/app-config';
 
 export enum ErrorMessages {
@@ -14,7 +14,7 @@ export enum ErrorMessages {
   templateUrl: './calc.component.html',
   styleUrls: ['./calc.component.scss']
 })
-export class CalcComponent {
+export class CalcComponent implements OnInit {
   // @Input() formConfig!: FormConfig; // The form configuration object
   // @Output() formSubmitted: EventEmitter<FormConfig[]> = new EventEmitter<FormConfig[]>();
   // form!: FormGroup;
@@ -66,7 +66,7 @@ export class CalcComponent {
   // }
 
   @Input() formConfig!: FormConfig;
-  @Input() submitText: string = 'Calculate';
+  @Input() submitText = 'Calculate';
   @Output() submitForm = new EventEmitter<FormGroup>();
   fields: [string,any][] = [];
 
@@ -92,7 +92,7 @@ export class CalcComponent {
   }
 
   getErrorMessage(error: KeyValue<string, any>, fieldName: string) {
-    let message: string = '';
+    let message = '';
     switch (error.key) {
       case ErrorMessages.minlength:
         message = `${fieldName} must be of minimum length ${error.value['requiredLength']}`;

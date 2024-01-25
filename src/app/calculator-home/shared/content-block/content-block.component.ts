@@ -48,9 +48,9 @@ export class ContentBlockComponent {
   @Input () itemConfig!: ContentBlockItemConfig;
 
   //traverse all inputs and determine the overall order
-  ngOnInit() {
-    // this.items = (this.paragraphs.concat(this.lists).concat(this.tables).concat(this.images)).sort((a, b) => a.order - b.order);
-  }
+  // ngOnInit() {
+  //   // this.items = (this.paragraphs.concat(this.lists).concat(this.tables).concat(this.images)).sort((a, b) => a.order - b.order);
+  // }
 
   sortOrder(items: ContentBlockItem[] | undefined) {
     return items?.sort((a, b) => a.order - b.order);

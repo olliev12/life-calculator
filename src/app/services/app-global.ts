@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import * as AppConfig from './../config/app-config';
 
@@ -14,7 +14,7 @@ export class AppGlobal {
   }
 
   public calculatorTypeRoute(calc: AppConfig.CalculatorType, child?: AppConfig.Calculator) {
-    let route = `/calculators/${calc.route}/${child?.route || ''}`;
+    const route = `/calculators/${calc.route}/${child?.route || ''}`;
     return route;
   }
 
@@ -65,7 +65,7 @@ export class AppGlobal {
   // }
 
   getNumberOfCharacters(strArr: string[], alphabet: string): number {
-    let numOfChars: number = 0;
+    let numOfChars = 0;
 
     strArr.forEach((char) => {
       numOfChars += alphabet.includes(char) ? 1 : 0;

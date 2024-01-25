@@ -9,8 +9,8 @@ import { AppGlobal } from '../services/app-global';
 })
 export class FooterComponent {
   readonly pages: AppConfig.CalculatorType[] = AppConfig.pages;
-  public menuOpen: boolean = false;
-  public isMobile: boolean = false;
+  public menuOpen = false;
+  public isMobile = false;
 
   constructor(public appGlobal: AppGlobal) {
     this.isMobile = window.innerWidth < 767;
@@ -24,7 +24,7 @@ export class FooterComponent {
   }
 
   @HostListener('window:resize', ['$event'])
-  public checkMobile($event: any) {
+  public checkMobile() {
     this.isMobile = window.innerWidth < 767;
   }
 }

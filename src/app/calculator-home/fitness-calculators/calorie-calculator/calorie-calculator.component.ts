@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+// import { ActivatedRoute, Router } from '@angular/router';
 import * as AppConfig  from 'src/app/config/app-config';
-import { AppGlobal } from 'src/app/services/app-global';
+// import { AppGlobal } from 'src/app/services/app-global';
 import { ContentBlockItem, ContentBlockItemConfig, ContentBlockItemType } from '../../shared/content-block/content-block.component';
 
 export interface Activity {
@@ -201,16 +201,16 @@ export class CalorieCalculatorComponent {
     ]
   }
 
-  header: string = 'Sample Heading'
+  header = 'Sample Heading'
   items: ContentBlockItem[] = [this.para1, this.styledPara, this.table, this.list, this.list2]
   itemConfig: ContentBlockItemConfig = {
     header: this.header,
     items: this.items
   }
   itemConfigArr: ContentBlockItemConfig[] = [this.itemConfig];
-  constructor() {
+  // constructor() {
 
-  }
+  // }
 
   calculateCalories(some: any) {
     console.log(some)
