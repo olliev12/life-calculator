@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import * as AppConfig  from '../config/app-config';
 import { AppGlobal } from '../services/app-global';
+import { getWindow } from 'ssr-window';
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +14,7 @@ export class FooterComponent {
   public isMobile = false;
 
   constructor(public appGlobal: AppGlobal) {
-    this.isMobile = window.innerWidth < 767;
+    this.isMobile = getWindow().innerWidth < 767;
   }
 
 
@@ -25,6 +26,6 @@ export class FooterComponent {
 
   @HostListener('window:resize', ['$event'])
   public checkMobile() {
-    this.isMobile = window.innerWidth < 767;
+    this.isMobile = getWindow().innerWidth < 767;
   }
 }

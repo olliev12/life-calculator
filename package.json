@@ -11,7 +11,9 @@
     "serve:ssr": "node dist/life-calculator/server/main.js",
     "build:ssr": "ng build && ng run life-calculator:server",
     "prerender": "ng run life-calculator:prerender",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "gzip": "gzipper c --verbose --include js --output-file-format [filename].[compressExt].[ext] ./dist",
+    "everything": "npm run prerender && npm run gzip && npm run serve:ssr"
   },
   "private": true,
   "dependencies": {
@@ -29,8 +31,10 @@
     "@nguniversal/express-engine": "^16.2.0",
     "bootstrap": "^5.2.3",
     "express": "^4.15.2",
+    "gzipper": "^7.2.0",
     "ngx-bootstrap": "^11.0.2",
     "rxjs": "^7.5.0",
+    "ssr-window": "^4.0.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.3"
   },
